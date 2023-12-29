@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>teste</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="icon" href="/static/media/favicon.svg" type="image/x-icon"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+</head>
+<body>    
+    <div class="background">
+        <img class="background-img" src="">
+    </div>
+    <div id="chat-widget-container">
+        <div id="chat-widget" class="small">
+            <!-- Header -->
+            <header class="chatbot-header">
+                <p>GEN AI TESTE</p>
+                <button id="minimizeChat">--</button>
+                <button id="restartChat">X</button>
+                <form id="join" method="POST" action='#'>
+                    <input type="hidden" name="join_room" id="join_room" placeholder="Room Name" value="${token}">
+                    <input type="submit" value="Join Room" id="join_submit">
+                </form>
+            </header>
+
+            <!-- Body -->
+            <main class="chatbot-body">
+                <div id="messages" class="smallMsg"></div>
+            </main>
+
+            <!-- Footer -->
+            <footer id="chat-input-container">
+                <div class="top-bar">
+                </div>
+                <form id="send_room" method="POST" action='#'>
+                    <input type="hidden" name="room_name" id="room_name" placeholder="Room Name" value="${token}">
+                    <input type="text" name="room_data" id="room_data" placeholder="Message" autocomplete="off">
+                    <button type="submit" class="chat_button">
+                        <i class="fa fa-paper-plane-o fa-2x send" aria-hidden="true"></i>
+                        <i class="fa fa-paper-plane-o fa-2x send2" aria-hidden="true"></i>
+                        <p></p>
+                    </button>
+                </form>
+            </footer>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
