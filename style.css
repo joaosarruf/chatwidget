@@ -1,0 +1,336 @@
+.background-img {
+    background-color: #F5F5F5;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: auto;
+    width: 1600px;
+}
+
+body { margin: 0; padding: 0; font-family: Helvetica Neue; }
+h1 { margin: 100px 100px 10px; }
+h2 { color: #999; margin: 0 100px 30px; font-weight: normal; }
+
+#chat-widget {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 300px;
+    height: 400px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+    transition: width 0.3s, height 0.3s, border-radius 0.3s;
+}
+
+main.chatbot-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 300px;
+}
+
+#messages {
+    padding: 10px 10px 0px;
+    overflow-y: auto;
+    max-height: 280px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Fill remaining space */
+}
+
+#input-message {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 1px solid rgb(0, 0, 0);
+    outline: none;
+    background-color: white;
+}
+
+#chat-widget.small {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#chat-widget.small .chatbot-header p {
+    color: #000;
+}
+
+#chat-widget.small #emit_data,
+#chat-widget.small #emit {
+    display: block !important;
+}
+
+#minimizeChat {
+    visibility: hidden;
+    position: absolute;
+    top: 5px;
+    right: 45px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    transition: color 0.2s ease, border-color 0.2s ease, visibility 0.2s ease;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#restartChat {
+    visibility: hidden;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #fff;
+    transition: color 0.2s ease, border-color 0.2s ease, visibility 0.2s ease;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chat-widget:not(.small) #minimizeChat,
+#chat-widget:not(.small) #restartChat {
+    visibility: visible;
+}
+
+header.chatbot-header {
+    background-color: #000; /*cor do cabeçalho*/
+    color: #fff; /*cor da letra do cabeçalho*/
+    font-family: 'TimBold', sans-serif; /*fonte da letra do cabeçalho*/
+    text-align: center;
+    padding: 5px;
+    font-size: 0.5rem;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    min-height: 15px;
+    max-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatbot-header p {
+    font-size: large;
+}
+
+#chat-container {
+    height: 70%;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+#chat-input-container {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+}
+
+#chat-input-container .top-bar {
+    border-bottom: 2px solid lightgray;
+    padding: 14px;
+    position: absolute;
+    top: -30%;
+    width: 272px;
+    left: 0;
+}
+
+.chat_button {
+    position: relative;
+    bottom: 1%;
+    right: 0.5%;
+    margin-left: auto;
+    width: 70px;
+    border: 2px solid rgb(83, 83, 83);
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.send {
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    color: rgb(83, 83, 83);
+    transition: all 0.5s ease;
+}
+
+.send2 {
+    position: absolute;
+    top: 80px;
+    left: 30px;
+    color: #696666;
+    transition: all 0.5s ease;
+}
+
+.send,
+.send2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease;
+}
+
+.chat_button:hover {
+    background: rgb(83, 83, 83);
+    transition: all 0.5s ease;
+}
+
+.chat_button:hover p {
+    color: #696666;
+    transition: all 0.5s ease;
+    animation: move 1s linear 1s forwards;
+}
+
+.chat_button:hover .send {
+    color: #fff;
+    top: -50px;
+    transition: all 0.5s ease;
+}
+
+.chat_button:hover .send2 {
+    color: #fff;
+    top: 15px;
+    transition: all 0.5s ease;
+    animation: sending 1s linear 1s forwards;
+}
+
+#chat-widget.small #chat-input-container {
+    display: none;
+    /* Esconde a input bar quando o chat esta minimizado */
+}
+
+#send_room {
+    padding-left: 5px;
+}
+
+#room_data {
+    background-color: whitesmoke;
+    border: none;
+    width: 200px;
+    height: 35px;
+    padding: 2px;
+    border-radius: 8px;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+#join_submit {
+    width: 0px;
+    height: 0px;
+    border: none;
+    background: none;
+}
+
+.user-message {
+    overflow: visible;
+    padding: 5px;
+    width: fit-content;
+    max-width: 200px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 22px;
+    background-color: rgb(224, 228, 6);
+    border-radius: 10px 10px 0 10px;
+    align-self: flex-end;
+}
+
+.bot-message {
+    background-color: rgb(83, 83, 83);
+    overflow: visible;
+    padding: 5px;
+    width: fit-content;
+    max-width: 200px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 15px;
+    line-height: 22px;
+    border-radius: 0 10px 10px 10px;
+    align-self: flex-start;
+}
+
+.popup-body {
+    width: 250px;
+    height: 150px;
+    background-color: rgb(211, 211, 211);
+    border: none;
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    text-align: center;
+}
+ 
+#connection-error {
+    display: flex;
+    width: 250px;
+    height: 150px;
+    background-color: rgb(211, 211, 211);
+    border: none;
+    position: absolute;
+    top: 30%;
+    left: 8%;
+    text-align: center;
+  }
+
+  #connection-error p{
+    font-size: larger;
+    padding: 5px
+  }
+.popup-body p {
+    font-size: larger;
+    padding: 5px
+}
+
+.popup-button {
+    position: absolute;
+    bottom: 5px;
+    left: 25px;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.popup-button button.yes {
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.popup-button button.no {
+    width: 80px;
+    height: 30px;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+}
